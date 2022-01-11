@@ -7,9 +7,25 @@
   @Html.LabelFor(m => m.Name)
   @Html.TextBoxFor(m => m.Name)
 
+  @Html.LabelFor(m => m.Ingredients)
+  @Html.TextAreaFor(m => m.Ingredients)
+
+  @Html.LabelFor(m => m.Instructions)
+  @Html.TextAreaFor(m => m.Instructions)
+  
   @Html.Label("Select category")
   @Html.DropDownList("CategoryId")
 
+  @Html.Label("Choose a rating")
+  <br>
+  @foreach (var rating in Model.Rating)
+  {
+    @Html.RadioButtonFor(m => m.Rating, rating) @rating<br>
+  }
+  <!-- @Html.DropDownList("Rating", new List<SelectListItem> {
+    
+  }) -->
+  
   <input type="submit" value="Add new item" class="btn btn-default" />
 }
 

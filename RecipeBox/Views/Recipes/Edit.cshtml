@@ -14,6 +14,14 @@
   @Html.Label("Select category")
   @Html.DropDownList("CategoryId")
 
+  <br>
+  @Html.Label("Choose a rating:")
+  <br>
+  @foreach (var rating in Model.Rating)
+  {
+    @Html.RadioButtonFor(m => m.Rating, rating) @rating<br>
+  }
+
   <input type="submit" value="Save">
 }
 
