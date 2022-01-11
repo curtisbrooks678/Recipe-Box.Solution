@@ -1,0 +1,16 @@
+@model RecipeBox.Models.Recipe
+
+<h4>Add a new recipe</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(m => m.Name)
+  @Html.TextBoxFor(m => m.Name)
+
+  @Html.Label("Select category")
+  @Html.DropDownList("CategoryId")
+
+  <input type="submit" value="Add new item" class="btn btn-default" />
+}
+
+<p>@Html.ActionLink("Show all items", "Index")</p>

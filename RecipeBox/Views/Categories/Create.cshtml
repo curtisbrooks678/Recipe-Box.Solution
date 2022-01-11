@@ -1,0 +1,11 @@
+@model RecipeBox.Models.Category
+
+<h4>Add a new category</h4>
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(m => m.Name)
+  @Html.TextBoxFor(m => m.Name)
+  <input type="submit" value="Add new category" />
+}
+<p>@Html.ActionLink("Show all categories", "Index")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>

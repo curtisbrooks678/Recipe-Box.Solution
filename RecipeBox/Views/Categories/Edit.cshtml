@@ -1,0 +1,18 @@
+@model RecipeBox.Models.Category
+
+<h2>Edit</h2>
+
+<h4>Edit this category: @Html.DisplayFor(m => m.Name)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(m => m.CategoryId)
+
+  @Html.LabelFor(m => m.Name)
+  @Html.EditorFor(m => m.Name)
+
+  <input type="submit" value="Save" />
+}
+
+<p>@Html.ActionLink("Back to categories", "Index")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
