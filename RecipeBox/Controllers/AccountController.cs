@@ -63,8 +63,13 @@ namespace RecipeBox.Controllers
       }
     }
 
-    [HttpPost]
-    public async Task<ActionResult> LogOff()
+    public ActionResult LogOff()
+    {
+      return View();
+    }
+
+    [HttpPost, ActionName("LogOff")]
+    public async Task<ActionResult> LogOffConfirmed()
     {
       await _signInManager.SignOutAsync();
       return RedirectToAction("Index");

@@ -12,15 +12,16 @@ using System.Security.Claims;
 namespace RecipeBox.Controllers 
 {
   [Authorize]
-  public class RecipeController : Controller
+  public class RecipesController : Controller
   {
     private readonly RecipeBoxContext _db;
     private readonly UserManager<ApplicationUser> _userManager;
-    public RecipeController(UserManager<ApplicationUser> userManager, RecipeBoxContext db)
+    public RecipesController(UserManager<ApplicationUser> userManager, RecipeBoxContext db)
     {
       _userManager = userManager;
       _db = db;
     }
+
     public async Task<ActionResult> Index()
     {
       var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -49,6 +50,15 @@ namespace RecipeBox.Controllers
       }
       _db.SaveChanges();
       return RedirectToAction("Index");
+    }
+
+    public ActionResult Details(int id)
+    {
+        var thisRecipe = _db.Recipes
+        .Include(recipe => recipe.JoinEntities)
+        .ThenInclude(join => join.Category)
+        .FirstOrDefault(recipe => recipe.RecipeId == id);
+        return View(thisRecipe);
     }
 
     public ActionResult Edit(int id)

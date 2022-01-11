@@ -48,7 +48,7 @@ namespace RecipeBox
       app.UseDeveloperExceptionPage();
       app.UseAuthentication();
       app.UseRouting();
-      app.UseAuthentication();
+      app.UseAuthorization();
       
       app.UseEndpoints(routes =>
       {
