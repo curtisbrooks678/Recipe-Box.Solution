@@ -3,15 +3,17 @@
 
 <h1>Recipes for @User.Identity.Name</h1>
 
+<h3>Recipes are ordered by rating, 5 is highest.</h3>
+
 @if (Model.Any())
 {
   <ul>
     @foreach (Recipe recipe in Model)
     {
-      <li>@Html.ActionLink($"{recipe.Name}", "Details", new { id = recipe.RecipeId })</li>
+      <li>@Html.ActionLink($"{recipe.Name} | Rating: {recipe.Rating}", "Details", new { id = recipe.RecipeId })</li>
     }
   </ul>
-}
+} 
 else 
 {
   <h3>No recipes have been added yet!</h3>
