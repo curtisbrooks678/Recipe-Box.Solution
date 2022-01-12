@@ -1,0 +1,20 @@
+@using RecipeBox.Models;
+@model IEnumerable<RecipeBox.Models.Recipe>
+
+<h2>Recipes by Ingredient for @User.Identity.Name</h2>
+
+@if(@Model.Any())
+{
+  <ul>
+    @foreach (Recipe recipe in Model)
+    {
+      <li>@Html.ActionLink($"{recipe.Name} | Rating: {recipe.Rating}", "Details", new { id = recipe.RecipeId })</li>
+    }
+  </ul>
+}
+else
+{
+  <h3>You don't have any recipes with that ingredient.</h3>
+}
+
+<p>@Html.ActionLink("Back to Recipes", "Index")</p>

@@ -19,5 +19,14 @@ else
   <h3>No recipes have been added yet!</h3>
 }
 
+@using (Html.BeginForm("Search", "Recipes"))
+{
+  @Html.Label("Search Ingredient:")
+  @Html.TextBox("searchString")
+
+  <input type="submit" value="Filter" />
+}
+
+
 <p>@Html.ActionLink("Add new recipe", "Create")</p>
 <p>@Html.ActionLink("Home", "Index", "Home")</p>

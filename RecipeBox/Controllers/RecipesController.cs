@@ -31,7 +31,7 @@ namespace RecipeBox.Controllers
         .OrderByDescending(recipe => recipe.Rating)
         .ToList();
       return View(userRecipes);
-    }
+    } 
 
     public ActionResult Create()
     {
@@ -124,6 +124,21 @@ namespace RecipeBox.Controllers
       }
       _db.SaveChanges();
       return RedirectToAction("Index");
+    }
+
+    public async Task<ActionResult> Search(string searchString)
+    {
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var currentUser = await _userManager.FindByIdAsync(userId);
+      var userRecipes = _db.Recipes
+        .Where(entry => entry.User.Id == currentUser.Id)
+        .ToList();
+      
+      if (!string.IsNullOrEmpty(searchString))
+      {
+        userRecipes = userRecipes.Where(r => r.Ingredients!.Contains(searchString)).ToList();
+      }
+      return View(userRecipes);
     }
   }
 }
