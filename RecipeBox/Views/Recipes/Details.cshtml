@@ -4,6 +4,15 @@
 <hr />
 <h3>@Html.DisplayNameFor(m => m.Name): @Html.DisplayFor(m => m.Name)</h3>
 
+@if(@Model.Rating == 0)
+{
+  <p>This recipe hasn't been rated yet! Edit the recipe to add a rating.</p>
+}
+else
+{
+  <p>Rating: @Model.Rating</p>
+}
+
 @if(@Model.JoinEntities.Count == 0)
 {
   <p>This recipe does not belong to a category</p>

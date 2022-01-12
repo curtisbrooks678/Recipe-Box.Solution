@@ -13,7 +13,8 @@ namespace RecipeBox.Models
     public string Name { get; set; }
     public string Instructions { get; set; }
     public string Ingredients { get; set; }
-    public int[] Rating = new[] { 1, 2, 3, 4, 5 };
+    public int Rating { get; set; }
+    public int[] RatingOptions = new[] { 1, 2, 3, 4, 5 };
     public virtual ApplicationUser User { get; set; }
     public virtual ICollection<CategoryRecipe> JoinEntities { get; }
   }

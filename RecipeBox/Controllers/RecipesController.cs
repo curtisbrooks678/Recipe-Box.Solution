@@ -65,6 +65,7 @@ namespace RecipeBox.Controllers
     {
       var thisRecipe = _db.Recipes.FirstOrDefault(recipe => recipe.RecipeId == id);
       ViewBag.CategoryId = new SelectList(_db.Categories, "CategoryId", "Name");
+      ViewBag.Rating = new SelectList(thisRecipe.RatingOptions, "Rating");
       return View(thisRecipe);
     }
 

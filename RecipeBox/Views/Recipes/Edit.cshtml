@@ -11,16 +11,15 @@
   @Html.LabelFor(m => m.Name)
   @Html.EditorFor(m => m.Name)
 
-  @Html.Label("Select category")
-  @Html.DropDownList("CategoryId")
+  @Html.LabelFor(m => m.Ingredients)
+  @Html.TextAreaFor(m => m.Ingredients)
+
+  @Html.LabelFor(m => m.Instructions)
+  @Html.TextAreaFor(m => m.Instructions)
 
   <br>
   @Html.Label("Choose a rating:")
-  <br>
-  @foreach (var rating in Model.Rating)
-  {
-    @Html.RadioButtonFor(m => m.Rating, rating) @rating<br>
-  }
+  @Html.DropDownList("Rating")
 
   <input type="submit" value="Save">
 }
