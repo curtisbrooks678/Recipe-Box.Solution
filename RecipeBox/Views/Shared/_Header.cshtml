@@ -16,9 +16,12 @@
     </li>
     @if (User.Identity.IsAuthenticated)
     {
-    <li>
-      <p>@Html.ActionLink("Log out", "LogOff", "Account")</p>
-    </li>
+      <li>
+        <p>@Html.ActionLink("Account Details", "Details", "Account")</p>
+      </li>
+      <li>
+        <p>@Html.ActionLink("Log out", "LogOff", "Account")</p>
+      </li>
     }
     else
     {

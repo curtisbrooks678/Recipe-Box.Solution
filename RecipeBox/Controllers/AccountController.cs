@@ -3,6 +3,12 @@ using Microsoft.AspNetCore.Identity;
 using RecipeBox.Models;
 using System.Threading.Tasks;
 using RecipeBox.ViewModels;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace RecipeBox.Controllers
 {
@@ -23,6 +29,13 @@ namespace RecipeBox.Controllers
     {
       return View();
     }
+    public async Task<ActionResult> Details()
+    {
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var currentUser = await _userManager.FindByIdAsync(userId);
+      return View(currentUser);
+    } 
+
 
     public IActionResult Register()
     {
