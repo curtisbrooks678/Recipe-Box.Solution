@@ -29,6 +29,7 @@ namespace RecipeBox.Controllers
     {
       return View();
     }
+    
     public async Task<ActionResult> Details()
     {
       var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -36,6 +37,21 @@ namespace RecipeBox.Controllers
       return View(currentUser);
     } 
 
+    // public async Task<ActionResult> Edit(string Id)
+    // {
+    //   // var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+    //   var currentUser = await _userManager.FindByIdAsync(Id);      
+    //   return View(currentUser);
+    // }
+
+    // [HttpPost]
+    // public ActionResult Edit(ApplicationUser currentUser)
+    // {
+    //   _db.Entry(currentUser).State = EntityState.Modified;
+    //   _db.Update(currentUser);
+    //   // _db.SaveChanges();
+    //   return RedirectToAction("Index");
+    // }
 
     public IActionResult Register()
     {
@@ -45,8 +61,9 @@ namespace RecipeBox.Controllers
     [HttpPost]
     public async Task<ActionResult> Register (RegisterViewModel model)
     {
-      var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
+      var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };  
       IdentityResult result = await _userManager.CreateAsync(user, model.Password);
+
       if (result.Succeeded)
       {
         return RedirectToAction("Index");

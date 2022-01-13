@@ -1,0 +1,23 @@
+@* @using RecipeBox.ViewModels;
+@model RecipeBox.Models.ApplicationUser
+
+<h2>Edit User</h2>
+<hr />
+@using (Html.BeginForm("Edit", "Account", FormMethod.Post))
+{
+  @Html.HiddenFor(user => user.Id)
+  
+  @Html.LabelFor(user => user.UserName, "User Name")
+  @Html.EditorFor(user => user.UserName)
+  
+  @Html.LabelFor(user => user.Email)
+  @Html.EditorFor(user => user.Email)
+
+  @* @Html.LabelFor(user => user.Password)
+  @Html.PasswordFor(user => user.Password)
+
+  @Html.LabelFor(user => user.ConfirmPassword)
+  @Html.PasswordFor(user => user.ConfirmPassword) 
+
+  <input type="submit" value="Save" />
+} *@
